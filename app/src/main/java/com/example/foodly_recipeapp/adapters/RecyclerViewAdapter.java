@@ -42,16 +42,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return new MyHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(@NonNull MyHolder myHolder, final int i) {
         myHolder.recipeTitle.setText(mData.get(i).getRecipeName());
 
         myHolder.img_recipe_thumbnail.setImageResource(mData.get(i).getThumbnail());
 
-        myHolder.cardView.setOnContextClickListener(new View.OnContextClickListener() {
+        myHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onContextClick(View v) {
+            public void onClick(View v) {
                 Intent intent=new Intent(mContext, RecipeActivity.class);
                 intent.putExtra("Name", mData.get(i).getRecipeName());
                 intent.putExtra("Ingredients", mData.get(i).getRecipeIngredients());
